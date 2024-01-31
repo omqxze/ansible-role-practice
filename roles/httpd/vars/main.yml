@@ -1,0 +1,4 @@
+---
+# vars file for roles/httpd
+
+var_team: "test project"

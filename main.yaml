@@ -1,0 +1,9 @@
+- name: Play to setup mysql server
+  hosts: dbserver
+  roles:
+    - role: mysql
+      
+- name: Play to setup httpd
+  hosts: webserver
+  roles:
+    - role: httpd

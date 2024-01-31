@@ -1,0 +1,11 @@
+---
+# handlers file for roles/httpd
+
+
+- name: restart_apache
+  service:
+    name: "{{ __service  }}"
+    state: restarted
+  loop: "{{ apache_services }}"
+  loop_control:
+    loop_var: __service

@@ -1,0 +1,17 @@
+---
+# defaults file for roles/httpd
+
+
+apache_packages:
+  - httpd
+  - php
+  - php-common
+  - php-opcache
+  - php-cli
+  - php-gd
+  - php-curl
+  - php-mysqlnd
+  - php-mysqli
+
+apache_services:
+  - httpd

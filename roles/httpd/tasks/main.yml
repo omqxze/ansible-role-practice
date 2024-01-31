@@ -1,0 +1,32 @@
+---
+# tasks file for roles/httpd
+
+
+- name: Install Httpd
+  yum:
+    name: "{{ __package  }}"
+    state: latest
+  loop: "{{ apache_packages  }}"
+  loop_control:
+    loop_var: __package
+
+- name: Start Httpd
+  service:
+    name: httpd
+    enabled: yes
+    state: started
+
+- name: Copy index.php
+  template:
+    src: index.php.j2
+    dest: /var/www/html/index.php
+  notify:
+    - restart_apache
+
+- name: Copy process
+  copy:
+    src: "{{ item }}"
+    dest: /var/www/html/
+  loop: 
+    - create.php
+    - process_create.php

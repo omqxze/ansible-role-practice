@@ -1,0 +1,22 @@
+---
+# tasks file for roles/mysql
+
+- name: install mariadb
+  yum:
+    name: mariadb105-server
+    state: latest
+
+- name: start mariadb
+  service:
+    name: mariadb
+    state: started
+
+
+- name: copy file
+  copy:
+    src: create_db_webtest.sql
+    dest: /tmp/
+
+- name: install mysql
+  shell: "mysql -uroot < /tmp/create_db_webtest.sql"
+  ignore_errors: yes
